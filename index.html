@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <title>Kukkumine</title>
+    <script>
+        let x=20, y=10, r=20, ysamm=1;
+        let t, g, lineRadius; //tahvel, graafiline kontekst
+        function algus(){
+            t=document.getElementById("tahvel");
+            g=t.getContext("2d");
+            setInterval('liigu()', 100)
+
+        }
+        function joonista(){
+            var radius=parseInt(document.getElementById('radius').value);
+            g.clearRect(0, 0, t.width, t.height);
+            g.strokeStyle="blue";
+
+            g.beginPath()
+            g.arc(50, y, radius, 0, 2*Math.PI, true);
+            g.stroke();
+            g.fill();
+            g.fillStyle='red';
+        }
+
+        function joonista1(radius){
+            var radius=parseInt(document.getElementById('radius').value);
+            g.strokeStyle="red";
+            g.beginPath()
+            g.arc(200, y, radius, 0, 2*Math.PI, true);
+            g.stroke();
+            g.fill();
+            g.fillStyle='blue';
+        }
+
+
+        function liigu(){
+            y=y+ysamm;
+            joonista();
+            joonista1();
+
+
+        }
+    </script>
+</head>
+<body onload="algus()">
+<canvas id="tahvel" width="300" height="200"
+        style="background-color:yellow"></canvas><br />
+<input type="text" id="radius">
+<button id="start"></button>
+</body>
+</html>
